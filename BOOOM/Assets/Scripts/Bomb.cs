@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    private CheckInput checkInputScript;
     private Animator anim;
     private Transform tr;
     public LayerMask layerMask;
@@ -12,6 +13,7 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        checkInputScript = GameObject.FindGameObjectWithTag("Player").GetComponent<CheckInput>();
         anim = GetComponent<Animator>();
         tr = GetComponent<Transform>();
         explosionTime = false;
@@ -40,10 +42,11 @@ public class Bomb : MonoBehaviour
     {
              
              Destroy(gameObject, 2f);
-            RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector3(5,5,1), 0, Vector2.zero, 1, layerMask);
+            RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector3(10,10,1), 0, Vector2.zero, 1, layerMask);
             if (hit.collider)
             {
-                Debug.Log(hit.collider.name + "Got Hit");
+            checkInputScript.EnemyCollision();
+                Destroy(hit.collider.gameObject);
             }
     }
 }

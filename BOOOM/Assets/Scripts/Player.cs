@@ -16,10 +16,14 @@ public class Player : MonoBehaviour
     [SerializeField][Range(0,20)] protected float speed = 2.5f;
     public float Speed {get { return speed; }set { if (speed < 6) speed = value; }}
     [SerializeField] [Range(0, 20)] protected int explosionRange;
-    public int ExplosionRange { get { return explosionRange; } set { if (explosionRange < 20) explosionRange = value; } }
+    public int ExplosionRange { get { return explosionRange; } set { explosionRange = value; } }
     protected Rigidbody2D rb;
+    protected int highScore = 0;
+    public int HighScore { get { return highScore; } set { highScore = value; } }
+    public int exp=0;
+    public int Exp { get { return exp; } set { exp = value%20; } }
 
-    
+
     void Awake()
     {
         Instance = this;
