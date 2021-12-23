@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
         get { return new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z)); }
         private set { }
     }
-    
+    // ENCAPSULATION and INHERITANCE
     [SerializeField][Range(0,20)] protected float speed = 2.5f;
     public float Speed {get { return speed; }set { if (speed < 6) speed = value; }}
     [SerializeField] [Range(0, 20)] protected int explosionRange;

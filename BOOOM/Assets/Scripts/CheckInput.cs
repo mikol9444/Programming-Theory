@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class CheckInput : Player
 {
 
-    
-    // Start is called before the first frame update
+
     Vector2 movement;
     public Text text;
     public Text levelText;
@@ -22,10 +21,11 @@ public class CheckInput : Player
         dashPower = 1;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
+        //Abstraction
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * Speed;
         if (Input.GetKeyDown(KeyCode.H))
         {
@@ -55,10 +55,12 @@ public class CheckInput : Player
 
     }
 
+
     public void SetBomb()
     {
         Instantiate(bombPrefab, intPosition, Quaternion.identity);
     }
+    //AbStraction
     public IEnumerator Dash()
     {
         dashPower = 2;
